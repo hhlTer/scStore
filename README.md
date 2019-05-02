@@ -5,20 +5,20 @@ The store is simply ArrayList. So the data is available only during the session.
 
 Commands for launch:
 
-git clone https://github.com/hhlTer/scStore
+   git clone https://github.com/hhlTer/scStore
 
 from the /scStore directory:
 
-sudo mvn package
+   sudo mvn package
 
 from /target directory:
 
-java -jar store-0.0.1-SNAPSHOT.jar 
+   java -jar store-0.0.1-SNAPSHOT.jar 
 
-application is awailable by localhost:8080/ 
+application is awailable by **localhost:8080/** 
 
-Adding product: menu -> operation -> add order
-Clear by year: menu -> operation -> clear
-List products: menu -> show -> all
-Reports: menu -> reports forming
+Adding product: **menu -> operation -> add order**
+Clear by year: **menu -> operation -> clear**
+List products: **menu -> show -> all**
+Reports: **menu -> reports forming**
 
