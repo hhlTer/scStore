@@ -17,8 +17,11 @@ from /target directory:
 
 application is awailable by **localhost:8080/** 
 
-Adding product: **menu -> operation -> add order**\n
-Clear by year: **menu -> operation -> clear**\n
-List products: **menu -> show -> all**\n
+Adding product: **menu -> operation -> add order**
+
+Clear by year: **menu -> operation -> clear**
+
+List products: **menu -> show -> all**
+
 Reports: **menu -> reports forming**
 
