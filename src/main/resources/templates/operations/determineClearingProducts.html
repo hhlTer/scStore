@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Clearing</title>
+</head>
+
+<script>
+    function loadResult() {
+        console.log("in loadResult");
+        document.getElementById("sbt").disabled = true;
+
+        var date = document.getElementById("dateId").value;
+        var body = 'date=' + date;
+
+        var myRequest = new XMLHttpRequest();
+
+        // myRequest.open('GET', '/addOrder2', true);
+        myRequest.open('GET', '/clearAllProductsInDay?' + body, true);
+
+        myRequest.onreadystatechange = function () {
+            console.log('onReadyStateChange');
+            if (myRequest.readyState === 4){
+                alert(myRequest.responseText);
+            }
+            document.getElementById("sbt").disabled = false;
+        };
+        myRequest.send(body);
+    }
+</script>
+
+<body>
+
+<div th:replace="fragments/TopMenu.html :: top_menu"></div>
+<div class="w3-container" align="center">
+    <form action="/addOrder" method="post" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin w3-center"
+          style="width: 50%">
+
+        <select name="dateToClear" id=dateId required>
+            <option th:each="date: ${dateStringList}">
+                <title th:text="${date}" th:value="${date}"/>
+            </option>
+        </select>
+
+        <div class="w3-container w3-margin">
+            <input class="w3-button w3-blue" id="sbt" type="button" value="Clear" onclick="loadResult()"/>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

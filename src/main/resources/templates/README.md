@@ -1,0 +1,4 @@
+# summerCumpStore
+
+Test task.
+

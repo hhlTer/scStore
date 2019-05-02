@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Order list</title>
+</head>
+<body>
+<div th:replace="fragments/TopMenu.html :: top_menu"></div>
+<div class="w3-container w3-margin">
+    <div class="w3-container">
+        <table class="w3-table-all w3-card-4">
+            <tr>
+                <!--<th>№</th>-->
+                <th>Product</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Price</th>
+                <th>Currency</th>
+            </tr>
+            <tr th:each="order : ${orders}">
+                <!--<td th:text="${order.getId()}"></td>-->
+                <td th:text="${order.getProductName()}"></td>
+                <td th:text="${order.getDate()}"></td>
+                <td th:text="${order.getAmount()}"></td>
+                <td th:text="${order.getPrice()}"></td>
+                <td th:text="${order.getCurrency().name()}"></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+</body>
+</html>

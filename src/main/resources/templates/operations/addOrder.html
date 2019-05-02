@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <title>Add order</title>
+</head>
+<script>
+    function loadResult() {
+        console.log("in loadResult");
+        document.getElementById("sbt").disabled = true;
+
+        var name = document.getElementById("nameId").value;
+        var price = document.getElementById("priceId").value;
+        var date = document.getElementById("dateId").value;
+        var amount = document.getElementById("amountId").value;
+        var currency = document.getElementById("currencyId").value;
+
+        var body = 'name=' + name +
+            '&price=' + price +
+            '&date=' + date +
+            '&amount=' + amount +
+            '&currency=' + currency;
+
+        var myRequest = new XMLHttpRequest();
+
+        // myRequest.open('GET', '/addOrder2', true);
+        myRequest.open('GET', '/addOrder?' + body, true);
+
+        myRequest.onreadystatechange = function () {
+            console.log('onReadyStateChange');
+            if (myRequest.readyState === 4){
+                alert(myRequest.responseText);
+            }
+            document.getElementById("sbt").disabled = false;
+        };
+        myRequest.send(body);
+    }
+</script>
+<body>
+    <div th:replace="fragments/TopMenu.html :: top_menu"></div>
+
+    <div class="w3-container" align="center">
+        <form action="/addOrder" method="post" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin w3-center" style="width: 50%" >
+
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fas fa-cart-arrow-down"></i></div>
+                <div class="w3-rest">
+                    <input class="w3-input w3-border" name="productTxtName" type="text" id="nameId" placeholder="Type product name.." title="Type in a product name">
+                </div>
+            </div>
+
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fas fa-calendar-alt"></i></div>
+                <div class="w3-rest">
+                    <input class="w3-input w3-border" name="date" type="date" id="dateId" placeholder="set a date">
+                </div>
+            </div>
+
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fas fa-receipt"></i></div>
+                <div class="w3-rest">
+                    <input class="form-control currency" name="amount" type="number" min="1" step="1" id="amountId" placeholder="set a amount">
+                </div>
+            </div>
+
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fas fa-funnel-dollar"></i></div>
+                <div class="w3-rest">
+                    <input class="form-control currency" name="price" id="priceId" type="number" min="0.01" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"
+                           placeholder="price" required/>
+                </div>
+            </div>
+
+            <i class="fab fa-bitcoin"></i>
+            <select name="currency" id=currencyId required>
+                <option th:each="currency: ${currencyList}">
+                    <title th:text="${currency}" th:value="${currency}"/>
+                </option>
+            </select>
+
+
+
+
+            <div class="w3-container w3-margin">
+                <input class="w3-button w3-blue" id="sbt" type="button" value="Add" onclick="loadResult()"/>
+            </div>
+
+        </form>
+    </div>
+
+
+
+
+    <!--<table id="myTable">-->
+        <!--<tr class="header">-->
+            <!--<th style="width:60%;">ФІО</th>-->
+            <!--<th style="width:40%;">ІПН</th>-->
+        <!--</tr>-->
+        <!--<tr th:each="product: ${productList}">-->
+            <!--<td th:text="${product.name}}"></td>-->
+            <!--<td th:text="${challenger.getPerson().getIpn()}"></td>-->
+        <!--</tr>-->
+    <!--</table>-->
+</body>
+</html>
+
+
+
+<!--<script>-->
+    <!--function myFunction() {-->
+        <!--var input, filter, table, tr, td, i, txtValue;-->
+        <!--input = document.getElementById("myInput");-->
+        <!--filter = input.value.toUpperCase();-->
+        <!--table = document.getElementById("myTable");-->
+        <!--tr = table.getElementsByTagName("tr");-->
+        <!--for (i = 0; i < tr.length; i++) {-->
+            <!--td = tr[i].getElementsByTagName("td")[0];-->
+            <!--if (td) {-->
+                <!--txtValue = td.textContent || td.innerText;-->
+                <!--if (txtValue.toUpperCase().indexOf(filter) > -1) {-->
+                    <!--tr[i].style.display = "";-->
+                <!--} else {-->
+                    <!--tr[i].style.display = "none";-->
+                <!--}-->
+            <!--}-->
+        <!--}-->
+    <!--}-->
+<!--</script>-->
+
+
+<!--<script>-->
+    <!--function productChange() {-->
+        <!--setToInput();-->
+
+        <!--var input, filter, table, tr, td, i, txtValue;-->
+        <!--input = document.getElementById("productId");-->
+        <!--filter = input.value.toUpperCase();-->
+        <!--table = document.getElementById("myTable");-->
+        <!--tr = table.getElementsByTagName("tr");-->
+
+        <!--// for (var j = 0; j < tr.length; j++) {-->
+        <!--//     tr[j].style.display =  'table-row';-->
+        <!--// }-->
+
+
+        <!--for (i = 0; i < tr.length; i++) {-->
+            <!--td = tr[i].getElementsByTagName("td")[0];-->
+            <!--if (td) {-->
+                <!--txtValue = td.textContent || td.innerText.slice(0, -11);-->
+                <!--if (txtValue.toUpperCase().indexOf(filter.slice(0, -11)) > -1) {-->
+                    <!--tr[i].style.display = "";-->
+                <!--} else {-->
+                    <!--tr[i].style.display = "none";-->
+                <!--}-->
+            <!--}-->
+        <!--}-->
+    <!--}-->
+<!--</script>-->
