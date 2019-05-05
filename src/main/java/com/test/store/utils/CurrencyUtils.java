@@ -54,8 +54,7 @@ public class CurrencyUtils {
     }
 
     private float converting(CurrencyEnum toCurrency, CurrencyEnum fromCurrency) {
-        return toCurrency == CurrencyEnum.EUR ? 1f :
-                convertingToEURTable.get(toCurrency) / convertingToEURTable.get(fromCurrency);
+        return convertingToEURTable.get(toCurrency) / convertingToEURTable.get(fromCurrency);
     }
 
     private Map<String, String> generateParametersUsingOrders() {
