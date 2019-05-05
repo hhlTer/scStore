@@ -21,7 +21,7 @@ public class ShowController {
      */
     @GetMapping("/listProducts")
     public ModelAndView listAllProducts(){
-        ModelAndView mav = new ModelAndView("/show/showOrders");
+        ModelAndView mav = new ModelAndView("show/showOrders");
         mav.addObject("orders", storeInterface.getAllOrders());
         return mav;
     }

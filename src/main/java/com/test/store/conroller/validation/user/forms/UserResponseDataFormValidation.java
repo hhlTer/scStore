@@ -1,16 +1,14 @@
-package com.test.store.conroller.service;
+package com.test.store.conroller.validation.user.forms;
 
 import com.test.store.model.enums.CurrencyEnum;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.DecimalFormat;
 import java.text.ParseException;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Component
-public class Validation {
+public class UserResponseDataFormValidation {
 
     public ValidationResult validationValues(
             String name,
@@ -75,6 +73,11 @@ public class Validation {
             return ValidationResult.WRONG_YEAR_FORMAT;
         }
         return ValidationResult.OK;
+    }
+
+    public ValidationResult yearValidation(String string){
+        //TODO:
+        return null;
     }
 
     public ValidationResult validationCurrency(String initCurrency) {

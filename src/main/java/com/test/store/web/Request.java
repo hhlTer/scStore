@@ -1,4 +1,4 @@
-package com.test.store.conroller.web;
+package com.test.store.web;
 
 import java.util.Map;
 

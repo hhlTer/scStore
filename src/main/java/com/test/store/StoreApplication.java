@@ -1,14 +1,8 @@
 package com.test.store;
 
-import com.test.store.conroller.web.FixerRequest;
-import com.test.store.model.domain.FixerResponceEntity;
-import com.test.store.model.domain.Order;
+import com.test.store.web.FixerRequest;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class StoreApplication {

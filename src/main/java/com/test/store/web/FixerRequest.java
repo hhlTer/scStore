@@ -1,9 +1,7 @@
-package com.test.store.conroller.web;
+package com.test.store.web;
 
 import com.google.gson.Gson;
-import com.test.store.conroller.utils.HttpFixerUriBuilderParameters;
 import com.test.store.model.domain.FixerResponceEntity;
-import com.test.store.model.domain.Order;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -15,7 +13,7 @@ import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.springframework.stereotype.Service;
 
-import static com.test.store.conroller.utils.HttpFixerUriBuilderParameters.*;
+import static com.test.store.web.HttpFixerUriBuilderParameters.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -59,7 +57,7 @@ public class FixerRequest<T extends FixerResponceEntity> implements Request<T> {
                 .setHost(HOST.value())
                 .setPath(PATH_LATEST.value())
                 .setParameters(parameters)
-                .setParameter(ACCES_KEY_PARAMETER.value(), API_KEY)
+                .setParameter(ACCESS_KEY_PARAMETER.value(), API_KEY)
                 .build();
         HttpGet localHttpGet = new HttpGet(uri);
         CloseableHttpResponse response = httpClient.execute(localHttpGet, context);

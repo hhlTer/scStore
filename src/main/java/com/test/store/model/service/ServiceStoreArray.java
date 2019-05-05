@@ -1,8 +1,8 @@
 package com.test.store.model.service;
 
-import com.test.store.conroller.utils.DateUtils;
 import com.test.store.model.domain.Order;
 import com.test.store.model.repository.StoreRepositoryInterface;
+import com.test.store.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

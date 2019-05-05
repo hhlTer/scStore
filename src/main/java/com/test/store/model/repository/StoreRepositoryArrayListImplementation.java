@@ -1,6 +1,6 @@
 package com.test.store.model.repository;
 
-import com.test.store.conroller.utils.DateUtils;
+import com.test.store.utils.DateUtils;
 import com.test.store.model.domain.Order;
 import com.test.store.model.domain.Store;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,11 +1,10 @@
-package com.test.store.conroller.utils;
+package com.test.store.utils;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
 
 public class DateUtils {
 
@@ -25,6 +24,7 @@ public class DateUtils {
     public static String parseStringFromDate(Date initDate){
         return DATE_FORMAT.format(initDate);
     }
+
     public static String parseYearFromDate(Date initDate){
         Calendar localCalendar = Calendar.getInstance();
         localCalendar.setTime(initDate);

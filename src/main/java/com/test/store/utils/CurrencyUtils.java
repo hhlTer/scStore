@@ -1,7 +1,7 @@
-package com.test.store.conroller.service;
+package com.test.store.utils;
 
-import com.test.store.conroller.utils.HttpFixerUriBuilderParameters;
-import com.test.store.conroller.web.Request;
+import com.test.store.web.HttpFixerUriBuilderParameters;
+import com.test.store.web.Request;
 import com.test.store.model.domain.FixerResponceEntity;
 import com.test.store.model.domain.Order;
 import com.test.store.model.enums.CurrencyEnum;

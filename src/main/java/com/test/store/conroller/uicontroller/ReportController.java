@@ -1,9 +1,9 @@
 package com.test.store.conroller.uicontroller;
 
-import com.test.store.conroller.service.CurrencyUtils;
-import com.test.store.conroller.service.Validation;
-import com.test.store.conroller.service.ValidationResult;
-import com.test.store.conroller.utils.DateUtils;
+import com.test.store.utils.DateUtils;
+import com.test.store.utils.CurrencyUtils;
+import com.test.store.conroller.validation.user.forms.UserResponseDataFormValidation;
+import com.test.store.conroller.validation.user.forms.ValidationResult;
 import com.test.store.model.domain.Order;
 import com.test.store.model.enums.CurrencyEnum;
 import com.test.store.model.service.ServiceStoreInterface;
@@ -30,11 +30,11 @@ public class ReportController {
     private CurrencyUtils currencyUtils;
 
     @Autowired
-    private Validation validation;
+    private UserResponseDataFormValidation userResponseDataFormValidation;
 
     @GetMapping("/choice_year_to_report")
     public ModelAndView choiceYear(){
-        ModelAndView mav = new ModelAndView("/report/choiceYear");
+        ModelAndView mav = new ModelAndView("report/choiceYear");
         List<String> years = determineYearsWithOrdersInStore(storeService.getAllOrders());
         List<String> currencies = Arrays.stream(CurrencyEnum.values())
                 .map(p -> p.name())
@@ -50,11 +50,11 @@ public class ReportController {
             @RequestParam(value = "date") String year,
             @RequestParam String currency
     ) {
-        ValidationResult localValidationResult = validation.validationNumber(year);
+        ValidationResult localValidationResult = userResponseDataFormValidation.validationNumber(year);
         if (localValidationResult != ValidationResult.OK){
             return localValidationResult.toString();
         }
-        localValidationResult = validation.validationCurrency(currency);
+        localValidationResult = userResponseDataFormValidation.validationCurrency(currency);
         if (localValidationResult != ValidationResult.OK){
             return localValidationResult.toString();
         }
