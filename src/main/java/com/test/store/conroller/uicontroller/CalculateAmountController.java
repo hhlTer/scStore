@@ -63,7 +63,7 @@ public class CalculateAmountController {
             }
         }
 
-        float costProduction = calculateCostProduction(year, currency);
+        double costProduction = calculateCostProduction(year, currency);
         ReportResponseTemplate template = new ReportResponseTemplate();
         template.setAmountResult(costProduction);
         template.setCurrencyCalc(CurrencyEnum.valueOf(currency));
@@ -72,7 +72,7 @@ public class CalculateAmountController {
         return template;
     }
 
-    private float calculateCostProduction(String year, String currency) {
+    private double calculateCostProduction(String year, String currency) {
         List<Order> orderListByYear = storeService.getAllOrdersByYear(DateUtils.parseDateFromString(year));
         return currencyUtils.calculate(CurrencyEnum.valueOf(currency), orderListByYear);
     }

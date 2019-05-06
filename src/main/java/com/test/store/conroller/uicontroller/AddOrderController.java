@@ -76,8 +76,8 @@ public class AddOrderController {
         p.setCurrency(CurrencyEnum.valueOf(initCurrency));
         p.setDate(DateUtils.parseDateFromString(initDate));
         p.setProductName(initName);
-        //TODO string to float normalize
-        p.setPrice(Float.parseFloat(initPrice));
+        //TODO string to Double normalize
+        p.setPrice(Double.parseDouble(initPrice));
         return p;
     }
 

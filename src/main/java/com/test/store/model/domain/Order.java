@@ -10,7 +10,7 @@ public class Order {
     private Date date;
     private int amount;
     private CurrencyEnum currency;
-    private float price;
+    private double price;
 
     public String getProductName() {
         return productName;
@@ -44,11 +44,11 @@ public class Order {
         currency = initCurrency;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float initPrice) {
+    public void setPrice(double initPrice) {
         price = initPrice;
     }
 

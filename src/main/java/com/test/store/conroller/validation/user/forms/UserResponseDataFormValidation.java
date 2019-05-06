@@ -26,10 +26,10 @@ public class UserResponseDataFormValidation {
             return ValidationResult.NOT_VALID_DATE_VALUE;
         }
         DecimalFormat df = new DecimalFormat();
-        float priceResult = 0;
+        double priceResult = 0;
         int amountResult = 0;
         try {
-            priceResult = df.parse(price).floatValue();
+            priceResult = df.parse(price).doubleValue();
         } catch (ParseException initE) {
             return ValidationResult.WRONG_PRICE_FORMAT;
         }

@@ -21,9 +21,9 @@ public class CurrencyUtils {
     private CurrencyEnum mainCurrency;
     private List<Order> orders;
     
-    private Map<CurrencyEnum, Float> convertingToEURTable;
+    private Map<CurrencyEnum, Double> convertingToEURTable;
 
-    public float calculate(CurrencyEnum mainCurrency, List<Order> orders){
+    public double calculate(CurrencyEnum mainCurrency, List<Order> orders){
         
         this.mainCurrency = mainCurrency;
         this.orders = orders;
@@ -36,18 +36,18 @@ public class CurrencyUtils {
         return calculateAll();
     }
 
-    private float calculateAll() {
+    private double calculateAll() {
         Double result = orders.stream()
                 .mapToDouble(p -> p.getPrice() * p.getAmount() * converting(mainCurrency, p.getCurrency()))
                 .sum();
         String string;
         Double d = Double.parseDouble(normalize(result));
-        Float f = Float.parseFloat(normalize(result));
-        return Float.parseFloat(normalize(result));
+        Double f = Double.parseDouble(normalize(result));
+        return Double.parseDouble(normalize(result));
     }
 
     public String normalize(Double number) {
-        float epsilon = 0.004f; // 4 tenths of a cent
+        Double epsilon = 0.004; // 4 tenths of a cent
         if (Math.abs(Math.round(number) - number) < epsilon) {
             String test = String.format("%10.0f", number);
             return String.format("%10.0f", number);
@@ -57,7 +57,7 @@ public class CurrencyUtils {
         }
     }
 
-    private float converting(CurrencyEnum toCurrency, CurrencyEnum fromCurrency) {
+    private double converting(CurrencyEnum toCurrency, CurrencyEnum fromCurrency) {
         return convertingToEURTable.get(toCurrency) / convertingToEURTable.get(fromCurrency);
     }
 
@@ -68,7 +68,7 @@ public class CurrencyUtils {
         return parameters;
     }
 
-    private Map<CurrencyEnum, Float> determineConvertingCurrencyMap(FixerResponceEntity initResult) {
+    private Map<CurrencyEnum, Double> determineConvertingCurrencyMap(FixerResponceEntity initResult) {
         return initResult.rates.entrySet().stream()
                 .collect(Collectors.toMap(
                         e -> CurrencyEnum.valueOf(e.getKey()),

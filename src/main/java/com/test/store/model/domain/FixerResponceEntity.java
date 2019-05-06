@@ -7,5 +7,5 @@ public class FixerResponceEntity {
     public int timestamp;
     public String base;
     public String date;
-    public Map<String, Float> rates;
+    public Map<String, Double> rates;
 }
