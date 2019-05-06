@@ -19,8 +19,7 @@ public enum ValidationResult {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
+    public String getDescription() {
         return description;
     }
 }

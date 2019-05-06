@@ -25,11 +25,33 @@
         console.log(body);
         var myRequest = new XMLHttpRequest();
 
-        myRequest.open('GET', '/reportByYear?' + body, true);
-
+        myRequest.open('GET', '/calculateReport?' + body, true);
         myRequest.onreadystatechange = function () {
             if (myRequest.readyState === 4){
-                alert(myRequest.responseText);
+                var res1 = myRequest.response.valueOf();
+                console.log("res1: " + res1);
+                var result = JSON.parse(myRequest.response.valueOf());
+                console.log("fuuuuuuck" + result);
+                var validationResult = result.validationResult;
+                console.log("ccccc" + validationResult);
+                console.log(result);
+                if (validationResult != "OK"){
+                    alert(result.message);
+                } else {
+
+                    var requestToAnswer = new XMLHttpRequest();
+
+                    requestToAnswer.open('POST', '/reportFormat', true);
+                    requestToAnswer.setRequestHeader("Content-Type", "application/json");
+                    requestToAnswer.onreadystatechange = function () {
+                        if (requestToAnswer.readyState === 4){
+                            alert(requestToAnswer.responseText);
+                        }
+                    };
+                    var jbody = JSON.stringify(result);
+                    console.log(jbody);
+                    requestToAnswer.send(jbody);
+                }
             }
             document.getElementById("sbt").disabled = false;
         };

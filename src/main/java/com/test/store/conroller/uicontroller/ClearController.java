@@ -55,7 +55,7 @@ public class ClearController {
     ){
         ValidationResult localValidationResult = userResponseDataFormValidation.validationNumber(date);
         if (localValidationResult != ValidationResult.OK){
-            return localValidationResult.toString();
+            return localValidationResult.getDescription();
         }
         int countOfClearedProducts = storeInterface.clearAllOrdersInDate(date);
         return "Cleared " + countOfClearedProducts + " orders";

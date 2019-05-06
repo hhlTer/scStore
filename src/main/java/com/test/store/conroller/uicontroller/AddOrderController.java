@@ -3,7 +3,7 @@ package com.test.store.conroller.uicontroller;
 import com.test.store.conroller.validation.user.forms.UserResponseDataFormValidation;
 import com.test.store.conroller.validation.user.forms.ValidationResult;
 import com.test.store.model.domain.Order;
-import com.test.store.model.enums.CurrencyEnum;
+import com.test.store.utils.CurrencyEnum;
 import com.test.store.model.service.ServiceStoreInterface;
 import com.test.store.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +62,7 @@ public class AddOrderController {
     ){
         ValidationResult localValidationResult = userResponseDataFormValidation.validationValues(name, date, price, currency, amount);
         if (localValidationResult != ValidationResult.OK){
-            return localValidationResult.toString();
+            return localValidationResult.getDescription();
         }
         Order p = fillProduct(name, date, price, currency, amount);
         storeInterface.addOrder(p);

@@ -1,6 +1,6 @@
 package com.test.store.model.domain;
 
-import com.test.store.model.enums.CurrencyEnum;
+import com.test.store.utils.CurrencyEnum;
 
 import java.util.Date;
 

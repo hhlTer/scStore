@@ -1,6 +1,6 @@
 package com.test.store.conroller.validation.user.forms;
 
-import com.test.store.model.enums.CurrencyEnum;
+import com.test.store.utils.CurrencyEnum;
 import org.springframework.stereotype.Component;
 
 import java.text.DecimalFormat;

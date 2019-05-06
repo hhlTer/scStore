@@ -1,6 +1,6 @@
 package com.test.store.model.domain;
 
-import com.test.store.model.enums.CurrencyEnum;
+import com.test.store.utils.CurrencyEnum;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;

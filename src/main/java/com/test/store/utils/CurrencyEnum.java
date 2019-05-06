@@ -1,4 +1,4 @@
-package com.test.store.model.enums;
+package com.test.store.utils;
 
 public enum CurrencyEnum {
     AED, AFN, ALL, AMD, ANG, AOA, ARS, AUD, AWG, AZN, BAM, BBD, BDT, BGN,

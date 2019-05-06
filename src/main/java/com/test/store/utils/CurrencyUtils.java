@@ -4,7 +4,6 @@ import com.test.store.web.HttpFixerUriBuilderParameters;
 import com.test.store.web.Request;
 import com.test.store.model.domain.FixerResponceEntity;
 import com.test.store.model.domain.Order;
-import com.test.store.model.enums.CurrencyEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -41,14 +40,19 @@ public class CurrencyUtils {
         Double result = orders.stream()
                 .mapToDouble(p -> p.getPrice() * p.getAmount() * converting(mainCurrency, p.getCurrency()))
                 .sum();
+        String string;
+        Double d = Double.parseDouble(normalize(result));
+        Float f = Float.parseFloat(normalize(result));
         return Float.parseFloat(normalize(result));
     }
 
-    private String normalize(Double number) {
+    public String normalize(Double number) {
         float epsilon = 0.004f; // 4 tenths of a cent
         if (Math.abs(Math.round(number) - number) < epsilon) {
+            String test = String.format("%10.0f", number);
             return String.format("%10.0f", number);
         } else {
+            String s = String.format("%10.2f", number);
             return String.format("%10.2f", number);
         }
     }
