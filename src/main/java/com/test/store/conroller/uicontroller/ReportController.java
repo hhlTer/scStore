@@ -19,7 +19,7 @@ public class ReportController {
     ){
         StringBuilder sb = new StringBuilder();
         sb.append("The cost of a products which stored in ").append(jbody.getYear())
-                .append(" is ").append(jbody.getCurrencyCalc().name())
+                .append(" is ").append(jbody.getCurrencyCalc().name()).append(" ")
                 .append(currencyUtils.normalize(jbody.getAmountResult()));
         return sb.toString();
     }
