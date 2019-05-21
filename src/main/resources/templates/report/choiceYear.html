@@ -28,13 +28,8 @@
         myRequest.open('GET', '/calculateReport?' + body, true);
         myRequest.onreadystatechange = function () {
             if (myRequest.readyState === 4){
-                var res1 = myRequest.response.valueOf();
-                console.log("res1: " + res1);
                 var result = JSON.parse(myRequest.response.valueOf());
-                console.log("fuuuuuuck" + result);
                 var validationResult = result.validationResult;
-                console.log("ccccc" + validationResult);
-                console.log(result);
                 if (validationResult != "OK"){
                     alert(result.message);
                 } else {
